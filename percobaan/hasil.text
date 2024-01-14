@@ -1,0 +1,23 @@
+"SELECT jadwal.tanggal, jadwal.waktu, jadwal.tim1, hasil.skor_a, hasil.skor_b, jadwal.tim2, jadwal.liga
+							  FROM jadwal
+							  INNER JOIN hasil
+							  ON jadwal.id_jadwal = hasil.id_jadwal
+							  ORDER BY hasil.tanggal, hasil.waktu";
+
+"SELECT hasil.skor_a, hasil.skor_b, 
+							  FROM jadwal
+							  INNER JOIN hasil
+							  ON jadwal.id_jadwal = hasil.id_jadwal
+							  WHERE id_hasil = '$_GET[id]'";
+
+
+<option disabled selected>Pilih</option>
+						<?php 
+							require_once 'koneksi.php';
+							$sql=mysqli_query($koneksi, "SELECT * FROM stadion");
+							while ($data=mysqli_fetch_array($sql)) {
+						?>
+						<option value="<?=$data['nama_stadion']?>"><?=$data['nama_stadion']?></option> 
+						<?php
+							}
+						?>
